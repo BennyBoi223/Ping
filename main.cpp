@@ -1,10 +1,11 @@
 #include <iostream>
+#include <curses.h>
 
 using namespace std;
 
 void drawScreen() {
 
- // [] = Array
+    // [] = Array
     char screen[25];
     // Indexor, conditional, Iterator
     for (int i = 0; i < 25; i++) {
@@ -33,8 +34,19 @@ void drawScreen() {
     cout << screen << endl;
 }
 
+void eraseScreen() {
+    for( int b = 0; b < 20; b++) {
+        cout << "\r \b";
+    }
+}
+
 int main()
 {
+    initscr();
+    cbreak();
+    noecho();
+    clear();
     drawScreen();
+    eraseScreen();
     return 0;
 }
